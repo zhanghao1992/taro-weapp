@@ -1,8 +1,9 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
-import {AtTabBar} from 'taro-ui'
+import { AtTabBar } from 'taro-ui'
 import Me from '../me'
+import Pneumonia from '../pneumonia'
 const tabList = [
   { 
     title: '列表', 
@@ -14,6 +15,10 @@ const tabList = [
   },
   { 
     title: '我的', 
+    iconType: 'folder',
+  },
+  { 
+    title: '肺炎', 
     iconType: 'folder',
   }
 ]
@@ -30,7 +35,7 @@ class Index extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      current: 0
+      current: 3
     }
   }
 
@@ -38,37 +43,21 @@ class Index extends Component {
     navigationBarTitleText: '首页'
   }
 
-  componentWillReceiveProps (nextProps) {
-    console.log(this.props.user, nextProps)
+  // componentWillReceiveProps (nextProps) {
+  //   console.log(this.props.user, nextProps)
+  // }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    // console.log('getDerivedStateFromProps')
+    return null
   }
 
-  componentWillMount() {
-    Taro.getSetting()
-      .then(res => {
-        console.log(res);
-        if(res.authSetting["scope.userInfo"]){
-          return true;
-        } else {
-          Taro.redirectTo({url: '/pages/login/index'})
-          throw new Error('没有授权')
-        }
-      })
-      .then(res=>{
-        return Taro.getUserInfo();
-      })
-      .then(res=>{
-        Taro.setStorage({
-          key: 'userInfo',
-          data: res.userInfo
-        })
-      })
-      .catch(err=>{
-        console.log(err)
-      })
+  // componentDidMount() {
+  //   console.log(process.env.TARO_ENV,'TARO_ENV');
+  //   console.log(process.env.NODE_ENV,'NODE_ENV');
+  // }
 
-  }
-
-  componentWillUnmount () { }
+  // componentWillUnmount () { }
 
   componentDidShow () {
     
@@ -77,6 +66,13 @@ class Index extends Component {
   componentDidHide () { }
 
   onHandleClick = (key) => {
+    const titleText = {
+      0: '首页',
+      1: 'ss',
+      2: '我的资料',
+      3: '肺炎最新消息'
+    }
+    Taro.setNavigationBarTitle({title: titleText[key]})
     this.setState({
       current: key,
     })
@@ -87,6 +83,7 @@ class Index extends Component {
     return (
       <View className='index'>
         {current == 2 && <Me/>}
+        {current == 3 && <Pneumonia/>}
         <AtTabBar
           fixed
           tabList={tabList}

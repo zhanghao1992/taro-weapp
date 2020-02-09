@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const config = {
   projectName: 'taro-weapp',
   date: '2020-1-30',
@@ -9,6 +10,13 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
+  // 编译插件配置
+  // plugins: [
+  //   new webpack.ContextReplacementPlugin(
+  //     /moment[/\\]locale$/,
+  //     /zh-cn/,
+  //   ),
+  // ],
   babel: {
     sourceMap: true,
     presets: [

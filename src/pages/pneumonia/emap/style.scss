@@ -1,0 +1,50 @@
+.emap {
+    font-size: 26px;
+    .title {
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        color: grey;
+        padding: 20px 0;
+    }
+    .top {
+        display: flex;
+        justify-content: space-around;
+        .item {
+            display: flex;
+            flex-direction: column;
+            font-weight: 700;
+            width: 20%;
+            text-align: center;
+            .smaller {
+                font-size: 22px;
+            }
+          
+            .small {
+                color: rgb(145, 147, 153);
+                font-size: 20px;
+            }
+            .color-grey {
+                color: grey;
+            }
+        }
+        .item:nth-child(1) {
+            color: rgb(229, 116, 113);
+        }  
+        .item:nth-child(2) {
+            color: rgb(221, 164, 81);
+        }
+        .item:nth-child(3) {
+            color: rgb(93, 64, 55);
+        }
+        .item:nth-child(4) {
+            color: rgb(145, 147, 153);
+        }
+        .item:nth-child(5) {
+            color: rgb(126, 190, 80);
+        }
+    }
+    .picker {
+        font-size: 28px;
+    }
+}
