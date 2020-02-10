@@ -47,4 +47,23 @@
     .picker {
         font-size: 28px;
     }
+    .header {
+        display: flex;
+        justify-content: space-around;
+        .item {
+            width: 25%;
+            text-align: center;
+            margin: 6px;
+        }
+     
+        .item:nth-child(2) {
+            color: rgb(229, 116, 113);
+        }
+        .item:nth-child(3) {
+            color: rgb(145, 147, 153);
+        }
+        .item:nth-child(4) {
+            color: rgb(126, 190, 80);
+        }
+    }
 }
